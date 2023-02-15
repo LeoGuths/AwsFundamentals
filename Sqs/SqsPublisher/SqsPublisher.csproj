@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="AWSSDK.SQS">
+        <HintPath>..\..\SqsPublisher\bin\Debug\net7.0\AWSSDK.SQS.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AWSSDK.Core" Version="3.7.104.6" />
+      <PackageReference Include="AWSSDK.SQS" Version="3.7.100.71" />
+    </ItemGroup>
+
+</Project>
