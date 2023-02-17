@@ -37,7 +37,7 @@ public class SqsMessenger : ISqsMessenger
         return await _sqs.SendMessageAsync(sendMessageRequest);
     }
 
-    private async Task<string> GetQueueUrlAsync()
+    private async ValueTask<string> GetQueueUrlAsync()
     {
         if (_queueUrl is not null)
         {
