@@ -2,9 +2,9 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
 using Amazon.S3;
 using Amazon.S3.Model;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Advanced;
-using SixLabors.ImageSharp.Processing;
+// using SixLabors.ImageSharp;
+// using SixLabors.ImageSharp.Advanced;
+// using SixLabors.ImageSharp.Processing;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -56,12 +56,12 @@ public class Function
                 await using var itemStream = await S3Client.GetObjectStreamAsync(s3Event.Bucket.Name, s3Event.Object.Key, new Dictionary<string, object>());
 
                 using var outStream = new MemoryStream();
-                using (var image = await Image.LoadAsync(itemStream))
-                {
-                    image.Mutate(x => x.Resize(500, 500, KnownResamplers.Lanczos3));
-                    var originalName = response.Metadata["x-amz-meta-originalname"];
-                    await image.SaveAsync(outStream, image.DetectEncoder(originalName));
-                }
+                // using (var image = await Image.LoadAsync(itemStream))
+                // {
+                //     image.Mutate(x => x.Resize(500, 500, KnownResamplers.Lanczos3));
+                //     var originalName = response.Metadata["x-amz-meta-originalname"];
+                //     await image.SaveAsync(outStream, image.DetectEncoder(originalName));
+                // }
 
                 await S3Client.PutObjectAsync(new PutObjectRequest
                 {
